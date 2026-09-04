@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Bengi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- cursor glow (desktop only, added via JS) -->
+<div id="cursorGlow" class="cursor-glow"></div>
+
+<!-- floating music toggle -->
+<button id="musicToggle" class="music-toggle" aria-label="Toggle music">
+  <span class="note">♫</span>
+</button>
+<audio id="bgMusic" loop preload="none">
+  <source src="assets/music/birthday.mp3" type="audio/mpeg">
+</audio>
+
+<!-- hidden easter egg trigger -->
+<div id="secretStar" class="secret-star" aria-hidden="true">✦</div>
+
+<!-- ================= OPENING ================= -->
+<section id="opening" class="opening">
+  <div class="stars" id="starField"></div>
+  <div class="opening-text">
+    <p class="line" id="line1">Hey&hellip;</p>
+    <p class="line" id="line2">I made something for someone very special.</p>
+    <p class="line" id="line3">And yes&hellip;<br>it's you, Bengi.</p>
+  </div>
+  <button id="enterBtn" class="enter-btn">ENTER <span class="spark">✨</span></button>
+</section>
+
+<!-- ================= MAIN CONTENT (hidden until enter) ================= -->
+<main id="mainContent" class="main-content">
+
+  <!-- particle burst layer -->
+  <div id="particleBurst" class="particle-burst"></div>
+
+  <!-- 2. BIRTHDAY REVEAL -->
+  <section class="section reveal-section" id="reveal">
+    <div class="glow-behind"></div>
+    <p class="eyebrow-soft reveal-fade">Happy Birthday</p>
+    <h1 class="hero-name reveal-fade">Bengi</h1>
+    <p class="reveal-fade delay-1">Today isn't just another day&hellip;</p>
+    <p class="reveal-fade delay-2 emphasis">It's the day the world got a little brighter.<br><span class="teasing-note">(and a little louder, and a little more chaotic)</span></p>
+    <button class="continue-btn scroll-to" data-target="story">Continue &rarr;</button>
+  </section>
+
+  <!-- 3. THE STORY -->
+  <section class="section story-section" id="story">
+    <h2 class="section-title">Where It All Began</h2>
+    <div class="story-intro">
+      <p class="story-line">Some people enter our lives&hellip;</p>
+      <p class="story-line">&hellip;and somehow become part of every chapter.</p>
+      <p class="story-line strong">You're one of those people, little one.</p>
+    </div>
+
+    <div class="timeline" id="timeline">
+      <!-- timeline items injected by JS from memories, alternating sides -->
+    </div>
+  </section>
+
+  <!-- 4. MEMORY GALLERY -->
+  <section class="section gallery-section" id="gallery">
+    <h2 class="section-title">Moments I'll Always Remember</h2>
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- cards injected by JS -->
+    </div>
+  </section>
+
+  <!-- lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous">&larr;</button>
+    <figure class="lightbox-figure">
+      <img id="lightboxImg" src="" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button class="lightbox-nav next" id="lightboxNext" aria-label="Next">&rarr;</button>
+  </div>
+
+  <!-- 5. THE FUNNY SECTION -->
+  <section class="section funny-section" id="funny">
+    <h2 class="section-title light">Things Only My Sister Can Do</h2>
+    <div class="funny-list" id="funnyList">
+      <!-- pairs injected by JS -->
+    </div>
+  </section>
+
+  <!-- 6. THE LETTER -->
+  <section class="section letter-section" id="letter">
+    <h2 class="section-title light">A Letter For You</h2>
+    <div class="letter-card">
+      <p class="letter-line" data-line>Dear Bengi,</p>
+      <p class="letter-line" data-line>There are probably a thousand things I could say today.</p>
+      <p class="letter-line" data-line>But if I had to choose just one&hellip;</p>
+      <p class="letter-line" data-line>I'm really lucky to have you as my sister.</p>
+      <p class="letter-line" data-line>We've laughed. We've fought. We've annoyed each other. We've made memories.</p>
+      <p class="letter-line" data-line>And through all of it, you've always been someone incredibly special to me.</p>
+      <p class="letter-line" data-line>I hope you achieve everything you dream about.</p>
+      <p class="letter-line" data-line>I hope you always have reasons to smile.</p>
+      <p class="letter-line" data-line>And most importantly&mdash; I hope you always remember how loved you are.</p>
+      <p class="letter-line signature" data-line>Happy Birthday.<br>Always &hearts;<br>&mdash; Your (much cooler, much older) sibling</p>
+    </div>
+  </section>
+
+  <!-- 7. THINGS I LOVE ABOUT YOU -->
+  <section class="section love-section" id="love">
+    <h2 class="section-title">A Few Things I Love About You</h2>
+    <div class="love-cards" id="loveCards">
+      <!-- cards injected by JS -->
+    </div>
+  </section>
+
+  <!-- 8. INTERACTIVE CAKE -->
+  <section class="section cake-section" id="cake">
+    <p class="cake-lead">Okay&hellip;</p>
+    <p class="cake-lead delay-1">Enough emotions.</p>
+    <p class="cake-lead delay-2">It's time for cake. 🎂</p>
+
+    <div class="cake-wrap">
+      <div class="cake" id="cakeEl">
+        <div class="candle" data-lit="true"><span class="flame"></span></div>
+        <div class="candle" data-lit="true"><span class="flame"></span></div>
+        <div class="candle" data-lit="true"><span class="flame"></span></div>
+        <div class="cake-top"></div>
+        <div class="cake-drip"></div>
+        <div class="cake-tier tier1"></div>
+        <div class="cake-tier tier2"></div>
+        <div class="cake-plate"></div>
+      </div>
+      <div class="smoke-layer" id="smokeLayer"></div>
+    </div>
+
+    <p class="make-a-wish">Make a wish.</p>
+    <button id="blowBtn" class="blow-btn">BLOW OUT THE CANDLES</button>
+
+    <div class="wish-result" id="wishResult">
+      <p class="wish-title">WISH GRANTED ✨</p>
+      <p>May this year be your best one yet.</p>
+    </div>
+  </section>
+
+  <!-- 9. EASTER EGG SECTION (hidden, revealed via secret star) -->
+  <section class="section secret-section" id="secretSection">
+    <p class="secret-line">Psst&hellip;</p>
+    <p class="secret-line delay-1">You found something I didn't tell you about.</p>
+    <p class="secret-message delay-2" id="secretMessage">
+      Just between us &mdash; out of everyone, I'd still pick you as my sister, every single time.
+      Don't let it go to your head.
+    </p>
+  </section>
+
+  <!-- 10. FINAL SURPRISE -->
+  <section class="section final-section" id="final">
+    <p class="final-lead">Wait&hellip;</p>
+    <p class="final-lead delay-1">There's one last thing.</p>
+    <button id="finalBtn" class="final-btn">ONE LAST SURPRISE</button>
+  </section>
+
+</main>
+
+<!-- fullscreen overlay for final countdown + reveal -->
+<div class="finale-overlay" id="finaleOverlay">
+  <div class="countdown" id="countdown"></div>
+  <div class="finale-content" id="finaleContent">
+    <h1 class="finale-title">HAPPY<br>BIRTHDAY<br>BENGI &hearts;</h1>
+    <p class="finale-line">You deserve all the happiness in the world.</p>
+    <p class="finale-line">Never stop being you.</p>
+    <p class="finale-line">Happy Birthday &hearts;</p>
+  </div>
+  <canvas id="fireworksCanvas"></canvas>
+  <div class="confetti-layer" id="confettiLayer"></div>
+  <div class="hearts-layer" id="heartsLayer"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
